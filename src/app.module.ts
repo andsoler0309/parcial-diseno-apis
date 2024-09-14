@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ProductoModule } from './producto/producto.module';
-import { TiendaModule } from './tienda/tienda.module';
-import { ProductoTiendaModule } from './producto-tienda/producto-tienda.module';
+import { ProductModule } from './product/product.module';
+import { StoreModule } from './store/store.module';
+import { ProductStoreModule } from './product-store/product-store.module';
 
 @Module({
   imports: [
@@ -14,9 +14,9 @@ import { ProductoTiendaModule } from './producto-tienda/producto-tienda.module';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    ProductoModule,
-    TiendaModule,
-    ProductoTiendaModule,
+    ProductModule,
+    StoreModule,
+    ProductStoreModule,
   ],
   controllers: [AppController],
   providers: [AppService],
