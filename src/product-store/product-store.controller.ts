@@ -19,6 +19,8 @@ import { StoreEntity } from 'src/store/store.entity';
 @Controller('products/:productId/stores')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class ProductStoreController {
+  private readonly logger = new Logger(ProductStoreController.name);
+
   constructor(private readonly productStoreService: ProductStoreService) {}
 
   @Post(':storeId')
