@@ -78,8 +78,8 @@ describe('ProductStoreService', () => {
     });
 
     const result: ProductEntity = await service.addStoreToProduct(
-      newStore.id,
       newProduct.id,
+      newStore.id,
     );
 
     expect(result.stores.length).toBe(1);
@@ -89,7 +89,7 @@ describe('ProductStoreService', () => {
 
   it('addStoreToProduct should throw an error if the store does not exist', async () => {
     await expect(() =>
-      service.addStoreToProduct('0', product.id),
+      service.addStoreToProduct(product.id, '0'),
     ).rejects.toHaveProperty(
       'message',
       'The store with the provided id does not exist',
@@ -98,7 +98,7 @@ describe('ProductStoreService', () => {
 
   it('addStoreToProduct should throw an error if the product does not exist', async () => {
     await expect(() =>
-      service.addStoreToProduct(storeList[0].id, '0'),
+      service.addStoreToProduct('0', storeList[0].id),
     ).rejects.toHaveProperty(
       'message',
       'The product with the provided id does not exist',
