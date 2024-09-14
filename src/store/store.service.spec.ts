@@ -134,7 +134,7 @@ describe('StoreService', () => {
 
   it('delete should remove a store', async () => {
     const store: StoreEntity = storeList[0];
-    await service.delete(store.id);
+    await service.remove(store.id);
     const storedStore: StoreEntity = await repository.findOne({
       where: { id: store.id },
     });
@@ -142,7 +142,7 @@ describe('StoreService', () => {
   });
 
   it('delete should throw an error if the store does not exist', async () => {
-    await expect(() => service.delete('0')).rejects.toHaveProperty(
+    await expect(() => service.remove('0')).rejects.toHaveProperty(
       'message',
       'The store with the provided id does not exist',
     );

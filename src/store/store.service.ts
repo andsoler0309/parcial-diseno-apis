@@ -36,7 +36,7 @@ export class StoreService {
     if (!/^[A-Z]{3}$/.test(store.city)) {
       throw new BusinessLogicException(
         'Invalid city',
-        BusinessError.UNPROCESSABLE_ENTITY,
+        BusinessError.PRECONDITION_FAILED,
       );
     }
 
@@ -55,14 +55,14 @@ export class StoreService {
     if (!/^[A-Z]{3}$/.test(store.city)) {
       throw new BusinessLogicException(
         'Invalid city',
-        BusinessError.UNPROCESSABLE_ENTITY,
+        BusinessError.PRECONDITION_FAILED,
       );
     }
 
     return this.storeRepository.save(store);
   }
 
-  async delete(id: string): Promise<void> {
+  async remove(id: string): Promise<void> {
     const store: StoreEntity = await this.findOne(id);
     if (!store) {
       throw new BusinessLogicException(

@@ -18,8 +18,8 @@ export class ProductStoreService {
   ) {}
 
   async addStoreToProduct(
-    storeId: string,
     productId: string,
+    storeId: string,
   ): Promise<ProductEntity> {
     const store: StoreEntity = await this.storeRepository.findOne({
       where: { id: storeId },
@@ -109,7 +109,7 @@ export class ProductStoreService {
       if (!store.id) {
         throw new BusinessLogicException(
           'The store id is required',
-          BusinessError.UNPROCESSABLE_ENTITY,
+          BusinessError.PRECONDITION_FAILED,
         );
       }
       const storeExists: StoreEntity = await this.storeRepository.findOne({

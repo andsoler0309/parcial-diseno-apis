@@ -36,7 +36,7 @@ export class ProductService {
     if (!['Perecedero', 'No perecedero'].includes(product.type)) {
       throw new BusinessLogicException(
         'Invalid product type',
-        BusinessError.UNPROCESSABLE_ENTITY,
+        BusinessError.PRECONDITION_FAILED,
       );
     }
 
@@ -55,7 +55,7 @@ export class ProductService {
     if (!['Perecedero', 'No perecedero'].includes(product.type)) {
       throw new BusinessLogicException(
         'Invalid product type',
-        BusinessError.UNPROCESSABLE_ENTITY,
+        BusinessError.PRECONDITION_FAILED,
       );
     }
 
